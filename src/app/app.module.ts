@@ -6,10 +6,48 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "@angular/fire/compat";
+import {NavigationComponent} from "./navigation/navigation.component";
+import {CarDetailsComponent} from "./car-details/car-details.component";
+import {CustomerCarCardComponent} from "./customer-car-card/customer-car-card.component";
+import {CustomerListCarCardComponent} from "./customer-list-car-card/customer-list-car-card.component";
+import {SellerHomeListPostsComponent} from "./seller-home-list-posts/seller-home-list-posts.component";
+import {EditCardPostComponent} from "./edit-card-post/edit-card-post.component";
+import {SellerCarCardComponent} from "./seller-car-card/seller-car-card.component";
+import {AddCarPostComponent} from "./add-car-post/add-car-post.component";
+import {AdminHomeComponent} from "./admin-home/admin-home.component";
+import {RadioButtonCustomComponent} from "./radio-button-custom/radio-button-custom.component";
+import {CustomerHomeComponent} from "./customer-home/customer.home.component";
+import {SignUpComponent} from "./sign-up/sign-up.component";
+import {LoginComponent} from "./login/login.component";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  declarations: [AppComponent,
+    LoginComponent,
+    SignUpComponent,
+    CustomerHomeComponent,
+    RadioButtonCustomComponent,
+    AdminHomeComponent,
+    AddCarPostComponent,
+    SellerCarCardComponent,
+    EditCardPostComponent,
+    SellerHomeListPostsComponent,
+    CustomerListCarCardComponent,
+    CustomerCarCardComponent,
+    CarDetailsComponent,
+    NavigationComponent],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
+,
+    AngularFireModule.initializeApp(environment.firebase),
+
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

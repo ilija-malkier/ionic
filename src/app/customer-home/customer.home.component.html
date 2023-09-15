@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-title>Home</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="vh-100">
+  <div class="d-flex justify-content-center align-items-center">
+    <i id="open-modal" class="ms-2 fa-solid fa-filter fa-xl"></i>
+    <ion-searchbar [debounce]="1000" (ionInput)="search($event)"  placeholder="Search"></ion-searchbar>
+  </div>
+  <ion-list>
+
+  <app-customer-list-car-card></app-customer-list-car-card>
+  </ion-list>
+
+  <ion-modal trigger="open-modal">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-button (click)="cancel()">Cancel</ion-button>
+          </ion-buttons>
+          <ion-title>Filter</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="confirm()" [strong]="true">Confirm</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding bg-info">
+        <ion-item>
+          <div class="d-flex w-100 flex-column">
+            <h3>Date Published From</h3>
+            <ion-datetime [(ngModel)]="dateTime" #datetime locale="en-GB" hourCycle="h12"></ion-datetime>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>Min Price</h3>
+            <ion-input #minprice [(ngModel)]="minPrice" label="" type="number" placeholder="0"></ion-input>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div>
+            <h3>Max Price</h3>
+            <ion-input #maxprice [(ngModel)]="maxPrice" label="" type="number" placeholder="0"></ion-input>
+          </div>
+        </ion-item>
+
+
+      </ion-content>
+    </ng-template>
+
+  </ion-modal>
+<!--  <ion-tabs>-->
+<!--    <ion-tab-bar slot="bottom">-->
+<!--      <ion-tab-button  tab="home">-->
+<!--        <ion-icon (click)="tabChange(1)" name="home-outline" [ngStyle]="{'color': tab===1? 'red':'gray'}" style="color:#0d0d0d"></ion-icon>-->
+<!--        <ion-label  [ngStyle]="{'color': tab===1? 'red':'gray'}">Home</ion-label>-->
+<!--      </ion-tab-button>-->
+<!--      <ion-tab-button tab="profile" >-->
+<!--        <ion-icon (click)="tabChange(2)" [ngStyle]="{'color': tab===2? 'red':'gray'}" name="person-outline">Profile</ion-icon>-->
+<!--        <ion-label [ngStyle]="{'color': tab===2? 'red':'gray'}">Profile</ion-label>-->
+<!--      </ion-tab-button>-->
+<!--    </ion-tab-bar>-->
+<!--  </ion-tabs>-->
+</ion-content>
+
